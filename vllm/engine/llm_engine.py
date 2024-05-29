@@ -592,8 +592,12 @@ class LLMEngine:
                 num_lookahead_slots=scheduler_outputs.num_lookahead_slots,
                 running_queue_size=scheduler_outputs.running_queue_size,
             )
+            start = time.time()
             output = self.model_executor.execute_model(
                 execute_model_req=execute_model_req)
+            print(f"output = {output}")
+            end = time.time()
+            print(f"execute model time {end - start}")
         else:
             output = []
 
